@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\megum\\OneDrive\\Escritorio\\DulceCaprichoConsola\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{18AEE18A-D9C0-89E8-61DD-29E4D778121D}|DulceCaprichoConsola.csproj|c:\\users\\megum\\onedrive\\escritorio\\dulcecaprichoconsola\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{18AEE18A-D9C0-89E8-61DD-29E4D778121D}|DulceCaprichoConsola.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18AEE18A-D9C0-89E8-61DD-29E4D778121D}|DulceCaprichoConsola.csproj|c:\\users\\megum\\onedrive\\escritorio\\dulcecaprichoconsola\\dulcecaprichoconsola.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{18AEE18A-D9C0-89E8-61DD-29E4D778121D}|DulceCaprichoConsola.csproj|solutionrelative:dulcecaprichoconsola.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DulceCaprichoConsola",
+              "DocumentMoniker": "C:\\Users\\megum\\OneDrive\\Escritorio\\DulceCaprichoConsola\\DulceCaprichoConsola.csproj",
+              "RelativeDocumentMoniker": "DulceCaprichoConsola.csproj",
+              "ToolTip": "C:\\Users\\megum\\OneDrive\\Escritorio\\DulceCaprichoConsola\\DulceCaprichoConsola.csproj",
+              "RelativeToolTip": "DulceCaprichoConsola.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-06-24T00:32:03.092Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\megum\\OneDrive\\Escritorio\\DulceCaprichoConsola\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\megum\\OneDrive\\Escritorio\\DulceCaprichoConsola\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-24T00:31:52.846Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
