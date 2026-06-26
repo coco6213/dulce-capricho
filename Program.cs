@@ -7,7 +7,8 @@ namespace DulceCaprichoConsola
     {
         static ClienteService clienteService = new ClienteService();
         static PedidoService pedidoService = new PedidoService();
-
+        static ProductoService productoService = new ProductoService();
+        static RecetaService recetaService = new RecetaService();
         static void Main(string[] args)
         {
             Console.WriteLine("Bienvenido al sistema de pedidos de Dulce Capricho");
@@ -18,9 +19,10 @@ namespace DulceCaprichoConsola
                 Console.WriteLine("\n=== MENÚ PRINCIPAL ===");
                 Console.WriteLine("1. Toma de Pedidos");
                 Console.WriteLine("2. Cronograma de Pedidos");
-                Console.WriteLine("3. Salir");
+                Console.WriteLine("3. Gestión de Productos");
+                Console.WriteLine("4. Salir");
                 Console.Write("Seleccione una opción: ");
-                
+
                 string entrada = Console.ReadLine();
                 if (int.TryParse(entrada, out opcion))
                 {
@@ -33,6 +35,9 @@ namespace DulceCaprichoConsola
                             ModuloCronogramaPedidos();
                             break;
                         case 3:
+                            ModuloGestionProductos();
+                            break;
+                        case 4:
                             Console.WriteLine("Saliendo del sistema...");
                             break;
                         default:
@@ -44,300 +49,595 @@ namespace DulceCaprichoConsola
                 {
                     Console.WriteLine("Por favor, ingrese un número válido.");
                 }
-            } while (opcion != 3);
+            } while (opcion != 4);
+
+            static void ModuloTomaPedidos()
+            {
+                int opcion = 0;
+                do
+                {
+                    Console.WriteLine("\n=== MÓDULO 1: TOMA DE PEDIDOS ===");
+                    Console.WriteLine("1. Cliente Registrado");
+                    Console.WriteLine("2. Cliente Nuevo");
+                    Console.WriteLine("3. Volver");
+                    Console.Write("Seleccione una opción: ");
+
+                    string entrada = Console.ReadLine();
+                    if (int.TryParse(entrada, out opcion))
+                    {
+                        switch (opcion)
+                        {
+                            case 1:
+                                ProcesarClienteRegistrado();
+                                break;
+                            case 2:
+                                ProcesarClienteNuevo();
+                                break;
+                            case 3:
+                                break;
+                            default:
+                                Console.WriteLine("Opción no válida.");
+                                break;
+                        }
+                    }
+                } while (opcion != 3);
+            }
+
+            static void ProcesarClienteRegistrado()
+            {
+                Console.Write("\nPor favor, ingrese el DNI del cliente: ");
+                string dni = Console.ReadLine();
+
+                Cliente cliente = clienteService.BuscarClientePorDni(dni);
+                if (cliente != null)
+                {
+                    Console.WriteLine($"Cliente encontrado: {cliente.Nombres} {cliente.Apellidos}");
+                    RegistrarPedido(cliente.DNI);
+                }
+                else
+                {
+                    Console.WriteLine("Cliente no encontrado.");
+                }
+            }
+
+            static void ProcesarClienteNuevo()
+            {
+                Console.WriteLine("\n--- Registro de Cliente Nuevo ---");
+                Cliente nuevoCliente = new Cliente();
+
+                Console.Write("DNI (8 dígitos): ");
+                nuevoCliente.DNI = Console.ReadLine();
+
+                Console.Write("Nombres: ");
+                nuevoCliente.Nombres = Console.ReadLine();
+
+                Console.Write("Apellidos: ");
+                nuevoCliente.Apellidos = Console.ReadLine();
+
+                Console.Write("Celular: ");
+                nuevoCliente.Celular = Console.ReadLine();
+
+                Console.Write("Dirección: ");
+                nuevoCliente.Direccion = Console.ReadLine();
+
+                string mensajeError;
+                bool exito = clienteService.RegistrarCliente(nuevoCliente, out mensajeError);
+
+                if (exito)
+                {
+                    Console.WriteLine("Cliente registrado correctamente.");
+                    RegistrarPedido(nuevoCliente.DNI);
+                }
+                else
+                {
+                    Console.WriteLine($"Error: {mensajeError}");
+                }
+            }
+
+            static void RegistrarPedido(string dniCliente)
+            {
+                Console.WriteLine("\nAhora registraremos el pedido.");
+                Pedido nuevoPedido = new Pedido();
+                nuevoPedido.DniCliente = dniCliente;
+
+                Console.Write("Producto: ");
+                nuevoPedido.Producto = Console.ReadLine();
+
+                Console.Write("Cantidad: ");
+                string cantStr = Console.ReadLine();
+                int cantidad;
+                if (int.TryParse(cantStr, out cantidad))
+                {
+                    nuevoPedido.Cantidad = cantidad;
+                }
+                else
+                {
+                    nuevoPedido.Cantidad = 1;
+                }
+
+                Console.Write("Fecha de Entrega (YYYY-MM-DD): ");
+                string fechaStr = Console.ReadLine();
+                DateTime fechaEntrega;
+                if (DateTime.TryParse(fechaStr, out fechaEntrega))
+                {
+                    nuevoPedido.FechaEntrega = fechaEntrega;
+                }
+                else
+                {
+                    nuevoPedido.FechaEntrega = DateTime.Now.AddDays(1);
+                }
+
+                Console.Write("Observaciones: ");
+                nuevoPedido.Observaciones = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(nuevoPedido.Observaciones))
+                {
+                    nuevoPedido.Observaciones = "Ninguna";
+                }
+
+                pedidoService.RegistrarPedido(nuevoPedido);
+                Console.WriteLine("\nPedido registrado correctamente.");
+            }
+
+            static void ModuloCronogramaPedidos()
+            {
+                int opcion = 0;
+                do
+                {
+                    Console.WriteLine("\n=== MÓDULO 2: CRONOGRAMA DE PEDIDOS ===");
+                    Console.WriteLine("1. Buscar Pedido");
+                    Console.WriteLine("2. Pedidos Pendientes");
+                    Console.WriteLine("3. Volver");
+                    Console.Write("Seleccione una opción: ");
+
+                    string entrada = Console.ReadLine();
+                    if (int.TryParse(entrada, out opcion))
+                    {
+                        switch (opcion)
+                        {
+                            case 1:
+                                BuscarPedido();
+                                break;
+                            case 2:
+                                MostrarPedidosPendientes();
+                                break;
+                            case 3:
+                                break;
+                            default:
+                                Console.WriteLine("Opción no válida.");
+                                break;
+                        }
+                    }
+                } while (opcion != 3);
+            }
+
+            static void BuscarPedido()
+            {
+                Console.WriteLine("\n--- Buscar Pedido ---");
+                Console.Write("Ingrese ID del Pedido (dejar en blanco si no lo sabe): ");
+                string idPedido = Console.ReadLine();
+
+                Console.Write("Ingrese DNI del Cliente (dejar en blanco si no lo sabe): ");
+                string dniCliente = Console.ReadLine();
+
+                Console.Write("Ingrese Fecha de Entrega (YYYY-MM-DD) opcional: ");
+                string fechaStr = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(idPedido) && string.IsNullOrEmpty(dniCliente))//
+                {
+                    Console.WriteLine("\nDebe ingresar un ID de pedido o DNI del cliente.");
+                    return;
+                }
+
+                List<Pedido> todosLosPedidos = pedidoService.ObtenerPedidos();
+                List<Pedido> resultados = new List<Pedido>();
+
+                foreach (Pedido p in todosLosPedidos)
+                {
+                    bool coincideId = string.IsNullOrEmpty(idPedido) || p.IdPedido == idPedido;
+                    bool coincideDni = string.IsNullOrEmpty(dniCliente) || p.DniCliente == dniCliente;
+
+                    bool coincideFecha = true;
+                    if (!string.IsNullOrEmpty(fechaStr))
+                    {
+                        DateTime fechaFiltro;
+                        if (DateTime.TryParse(fechaStr, out fechaFiltro))
+                        {
+                            if (p.FechaEntrega.Date != fechaFiltro.Date)
+                            {
+                                coincideFecha = false;
+                            }
+                        }
+                    }
+
+                    if (coincideId && coincideDni && coincideFecha)
+                    {
+                        resultados.Add(p);
+                    }
+                }
+
+                if (resultados.Count > 0)
+                {
+                    foreach (Pedido res in resultados)
+                    {
+                        Console.WriteLine("\n-------------------------");
+                        Console.WriteLine($"Código Pedido: {res.IdPedido}");
+                        Console.WriteLine($"Cliente (DNI): {res.DniCliente}");
+                        Console.WriteLine($"Producto: {res.Producto}");
+                        Console.WriteLine($"Cantidad: {res.Cantidad}");
+                        Console.WriteLine($"Fecha Entrega: {res.FechaEntrega:dd/MM/yyyy}");
+                        Console.WriteLine($"Estado: {res.Estado}");
+                        Console.WriteLine("-------------------------");
+
+                        Console.WriteLine("Detalle del Pedido seleccionado:");
+                        Console.WriteLine($"Observaciones: {res.Observaciones}");
+                        Console.WriteLine($"Fecha Registro: {res.FechaRegistro}");
+
+                        Console.WriteLine("\n¿Desea cambiar el estado de este pedido?");
+                        Console.WriteLine("1. Cambiar Estado");
+                        Console.WriteLine("2. Volver");
+                        Console.Write("Seleccione opción: ");
+                        string opcEstado = Console.ReadLine();
+
+                        if (opcEstado == "1")
+                        {
+                            if (pedidoService.CambiarEstadoPedido(res.IdPedido))
+                            {
+                                Console.WriteLine("Estado actualizado correctamente.");
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("\nNo se encontraron pedidos con los criterios indicados.");
+                }
+            }
+
+            static void MostrarPedidosPendientes()
+            {
+                Console.WriteLine("\n--- Pedidos Pendientes (Próximos 6 días) ---");
+                List<Pedido> todosLosPedidos = pedidoService.ObtenerPedidos();
+                List<Pedido> pendientes = new List<Pedido>();
+
+                DateTime hoy = DateTime.Now.Date;
+                DateTime limite = hoy.AddDays(6);
+
+                foreach (Pedido p in todosLosPedidos)
+                {
+                    if (p.Estado == "Pendiente" && p.FechaEntrega.Date >= hoy && p.FechaEntrega.Date <= limite)
+                    {
+                        pendientes.Add(p);
+                    }
+                }
+
+
+                for (int i = 0; i < pendientes.Count - 1; i++)
+                {
+                    for (int j = 0; j < pendientes.Count - 1 - i; j++)
+                    {
+                        if (pendientes[j].FechaEntrega > pendientes[j + 1].FechaEntrega)
+                        {
+                            Pedido temp = pendientes[j];
+                            pendientes[j] = pendientes[j + 1];
+                            pendientes[j + 1] = temp;
+                        }
+                    }
+                }
+
+                if (pendientes.Count > 0)
+                {
+                    foreach (Pedido p in pendientes)
+                    {
+                        Cliente cliente = clienteService.BuscarClientePorDni(p.DniCliente);
+                        string nombreCliente = cliente != null ? cliente.Nombres : "Desconocido";
+
+                        Console.WriteLine($"\n{p.FechaEntrega:dd/MM/yyyy}");
+                        Console.WriteLine($"{p.IdPedido}");
+                        Console.WriteLine($"Cliente: {nombreCliente}");
+                        Console.WriteLine($"Producto: {p.Producto}");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No hay pedidos pendientes en los próximos 6 días.");
+                }
+            }
         }
 
-        static void ModuloTomaPedidos()
+
+
+        // AUGUSTO - PRODUCTOS
+        static void ModuloGestionProductos()
         {
             int opcion = 0;
             do
             {
-                Console.WriteLine("\n=== MÓDULO 1: TOMA DE PEDIDOS ===");
-                Console.WriteLine("1. Cliente Registrado");
-                Console.WriteLine("2. Cliente Nuevo");
-                Console.WriteLine("3. Volver");
+                Console.WriteLine("\n=== MÓDULO 3: GESTIÓN DE PRODUCTOS ===");
+                Console.WriteLine("1. Registrar Nuevo Producto");
+                Console.WriteLine("2. Ver Catálogo de Productos");
+                Console.WriteLine("3. Editar Producto");
+                Console.WriteLine("4. Eliminar Producto");
+                Console.WriteLine("5. Gestionar Receta de Producto");
+                Console.WriteLine("6. Volver");
                 Console.Write("Seleccione una opción: ");
-                
+
                 string entrada = Console.ReadLine();
                 if (int.TryParse(entrada, out opcion))
                 {
                     switch (opcion)
                     {
                         case 1:
-                            ProcesarClienteRegistrado();
+                            RegistrarProductoNuevo();
                             break;
                         case 2:
-                            ProcesarClienteNuevo();
+                            MostrarCatalogoProductos();
                             break;
                         case 3:
+                            EditarProducto();
+                            break;
+                        case 4:
+                            EliminarProducto();
+                            break;
+                        case 5:
+                            SubModuloRecetas();
+                            break;
+                        case 6:
                             break;
                         default:
                             Console.WriteLine("Opción no válida.");
                             break;
                     }
                 }
-            } while (opcion != 3);
+            } while (opcion != 6);
         }
 
-        static void ProcesarClienteRegistrado()
+        static void RegistrarProductoNuevo()
         {
-            Console.Write("\nPor favor, ingrese el DNI del cliente: ");
-            string dni = Console.ReadLine();
+            Console.WriteLine("\n--- Registro de Producto Nuevo ---");
+            Producto nuevoProd = new Producto();
 
-            Cliente cliente = clienteService.BuscarClientePorDni(dni);
-            if (cliente != null)
-            {
-                Console.WriteLine($"Cliente encontrado: {cliente.Nombres} {cliente.Apellidos}");
-                RegistrarPedido(cliente.DNI);
-            }
-            else
-            {
-                Console.WriteLine("Cliente no encontrado.");
-            }
+            Console.Write("Nombre del Producto: ");
+            nuevoProd.Nombre = Console.ReadLine();
+
+            Console.Write("Precio Promedio: ");
+            nuevoProd.PrecioPromedio = decimal.Parse(Console.ReadLine());
+
+            Console.Write("Costo de Producción: ");
+            nuevoProd.Costo = decimal.Parse(Console.ReadLine());
+
+            Console.Write("Tiempo Estimado (en horas, ej: 1.5): ");
+            nuevoProd.TiempoEstimado = double.Parse(Console.ReadLine());
+
+            productoService.RegistrarProducto(nuevoProd);
+            Console.WriteLine("\nProducto guardado exitosamente.");
         }
 
-        static void ProcesarClienteNuevo()
+        static void MostrarCatalogoProductos()
         {
-            Console.WriteLine("\n--- Registro de Cliente Nuevo ---");
-            Cliente nuevoCliente = new Cliente();
+            Console.WriteLine("\n--- Catálogo de Productos Registrados ---");
+            List<Producto> lista = productoService.ObtenerProductos();
 
-            Console.Write("DNI (8 dígitos): ");
-            nuevoCliente.DNI = Console.ReadLine();
-
-            Console.Write("Nombres: ");
-            nuevoCliente.Nombres = Console.ReadLine();
-
-            Console.Write("Apellidos: ");
-            nuevoCliente.Apellidos = Console.ReadLine();
-
-            Console.Write("Celular: ");
-            nuevoCliente.Celular = Console.ReadLine();
-
-            Console.Write("Dirección: ");
-            nuevoCliente.Direccion = Console.ReadLine();
-
-            string mensajeError;
-            bool exito = clienteService.RegistrarCliente(nuevoCliente, out mensajeError);
-
-            if (exito)
+            if (lista.Count > 0)
             {
-                Console.WriteLine("Cliente registrado correctamente.");
-                RegistrarPedido(nuevoCliente.DNI);
+                foreach (Producto p in lista)
+                {
+                    Console.WriteLine("-------------------------------------");
+                    Console.WriteLine($"ID Producto : {p.IdProducto}");
+                    Console.WriteLine($"Nombre      : {p.Nombre}");
+                    Console.WriteLine($"Precio Venta: S/. {p.PrecioPromedio}");
+                    Console.WriteLine($"Costo       : S/. {p.Costo}");
+                    Console.WriteLine($"Tiempo Prep.: {p.TiempoEstimado} hrs");
+                    Console.WriteLine("Receta Asociada:");
+                    if (p.Ingredientes.Count > 0)
+                    {
+                        foreach (var ing in p.Ingredientes)
+                        {
+                            Console.WriteLine($"  * {ing.SubProducto}: {ing.Cantidad} {ing.UnidadMedida}");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("  (Sin ingredientes registrados)");
+                    }
+                }
+                Console.WriteLine("-------------------------------------");
             }
             else
             {
-                Console.WriteLine($"Error: {mensajeError}");
+                Console.WriteLine("No hay productos registrados todavía.");
             }
         }
 
-        static void RegistrarPedido(string dniCliente)
+        static void EditarProducto()
         {
-            Console.WriteLine("\nAhora registraremos el pedido.");
-            Pedido nuevoPedido = new Pedido();
-            nuevoPedido.DniCliente = dniCliente;
+            Console.WriteLine("\n--- Editar Producto ---");
+            Console.Write("Ingrese el ID del producto a editar: ");
+            string id = Console.ReadLine();
 
-            Console.Write("Producto: ");
-            nuevoPedido.Producto = Console.ReadLine();
+            List<Producto> productos = productoService.ObtenerProductos();
+            Producto prodAEditar = null;
 
-            Console.Write("Cantidad: ");
-            string cantStr = Console.ReadLine();
-            int cantidad;
-            if (int.TryParse(cantStr, out cantidad))
+            foreach (Producto p in productos)
             {
-                nuevoPedido.Cantidad = cantidad;
+                if (p.IdProducto == id)
+                {
+                    prodAEditar = p;
+                    break;
+                }
+            }
+
+            if (prodAEditar != null)
+            {
+                Console.WriteLine($"\nProducto encontrado: {prodAEditar.Nombre}");
+
+                Console.Write("Nuevo Nombre (dejar en blanco para no cambiar): ");
+                string nuevoNombre = Console.ReadLine();
+                if (!string.IsNullOrEmpty(nuevoNombre)) prodAEditar.Nombre = nuevoNombre;
+
+                Console.Write("Nuevo Precio Venta (dejar en blanco para no cambiar): ");
+                string nuevoPrecio = Console.ReadLine();
+                if (!string.IsNullOrEmpty(nuevoPrecio)) prodAEditar.PrecioPromedio = decimal.Parse(nuevoPrecio);
+
+                Console.Write("Nuevo Costo (dejar en blanco para no cambiar): ");
+                string nuevoCosto = Console.ReadLine();
+                if (!string.IsNullOrEmpty(nuevoCosto)) prodAEditar.Costo = decimal.Parse(nuevoCosto);
+
+                Console.Write("Nuevo Tiempo Estimado en horas (ej: 0.5 / dejar en blanco para no cambiar): ");
+                string nuevoTiempo = Console.ReadLine();
+                if (!string.IsNullOrEmpty(nuevoTiempo)) prodAEditar.TiempoEstimado = double.Parse(nuevoTiempo);
+
+                productoService.ActualizarArchivo(productos);
+                Console.WriteLine("\nProducto actualizado correctamente.");
             }
             else
             {
-                nuevoPedido.Cantidad = 1;
+                Console.WriteLine("\nProducto no encontrado.");
             }
-
-            Console.Write("Fecha de Entrega (YYYY-MM-DD): ");
-            string fechaStr = Console.ReadLine();
-            DateTime fechaEntrega;
-            if (DateTime.TryParse(fechaStr, out fechaEntrega))
-            {
-                nuevoPedido.FechaEntrega = fechaEntrega;
-            }
-            else
-            {
-                nuevoPedido.FechaEntrega = DateTime.Now.AddDays(1); 
-            }
-
-            Console.Write("Observaciones: ");
-            nuevoPedido.Observaciones = Console.ReadLine();
-            
-            if (string.IsNullOrEmpty(nuevoPedido.Observaciones))
-            {
-                nuevoPedido.Observaciones = "Ninguna";
-            }
-
-            pedidoService.RegistrarPedido(nuevoPedido);
-            Console.WriteLine("\nPedido registrado correctamente.");
         }
 
-        static void ModuloCronogramaPedidos()
+        static void EliminarProducto()
+        {
+            Console.WriteLine("\n--- Eliminar Producto ---");
+            Console.Write("Ingrese el ID del producto a eliminar: ");
+            string id = Console.ReadLine();
+
+            if (productoService.EliminarProducto(id))
+            {
+                Console.WriteLine("\nProducto eliminado exitosamente del archivo.");
+            }
+            else
+            {
+                Console.WriteLine("\nNo se encontró ningún producto con ese ID.");
+            }
+        }
+
+        static void SubModuloRecetas()
         {
             int opcion = 0;
             do
             {
-                Console.WriteLine("\n=== MÓDULO 2: CRONOGRAMA DE PEDIDOS ===");
-                Console.WriteLine("1. Buscar Pedido");
-                Console.WriteLine("2. Pedidos Pendientes");
-                Console.WriteLine("3. Volver");
+                Console.WriteLine("\n=== SUB-MÓDULO: RECETAS DE PRODUCTOS ===");
+                Console.WriteLine("1. Agregar Insumo a Receta");
+                Console.WriteLine("2. Consultar Receta de un Producto");
+                Console.WriteLine("3. Eliminar Receta Completa");
+                Console.WriteLine("4. Volver al Menú de Productos");
                 Console.Write("Seleccione una opción: ");
-                
+
                 string entrada = Console.ReadLine();
                 if (int.TryParse(entrada, out opcion))
                 {
                     switch (opcion)
                     {
                         case 1:
-                            BuscarPedido();
+                            AgregarInsumoAReceta();
                             break;
                         case 2:
-                            MostrarPedidosPendientes();
+                            ConsultarRecetaProducto();
                             break;
                         case 3:
+                            EliminarRecetaProducto();
+                            break;
+                        case 4:
                             break;
                         default:
                             Console.WriteLine("Opción no válida.");
                             break;
                     }
                 }
-            } while (opcion != 3);
+            } while (opcion != 4);
         }
+        // AUGUSTO - PRODUCTOS
 
-        static void BuscarPedido()
+        // AUGUSTO - RECETAS
+        static void AgregarInsumoAReceta()
         {
-            Console.WriteLine("\n--- Buscar Pedido ---");
-            Console.Write("Ingrese ID del Pedido (dejar en blanco si no lo sabe): ");
-            string idPedido = Console.ReadLine();
+            Console.WriteLine("\n--- Agregar Insumos a Receta ---");
+            Console.Write("Ingrese el ID del Producto: ");
+            string idProd = Console.ReadLine();
 
-            Console.Write("Ingrese DNI del Cliente (dejar en blanco si no lo sabe): ");
-            string dniCliente = Console.ReadLine();
-
-            Console.Write("Ingrese Fecha de Entrega (YYYY-MM-DD) opcional: ");
-            string fechaStr = Console.ReadLine();
-
-            if (string.IsNullOrEmpty(idPedido) && string.IsNullOrEmpty(dniCliente))//
+            Producto p = productoService.BuscarProductoPorId(idProd);
+            if (p == null)
             {
-                Console.WriteLine("\nDebe ingresar un ID de pedido o DNI del cliente.");
+                Console.WriteLine("\nEl producto no existe. Regístrelo primero en el catálogo.");
                 return;
             }
 
-            List<Pedido> todosLosPedidos = pedidoService.ObtenerPedidos();
-            List<Pedido> resultados = new List<Pedido>();
+            Console.WriteLine($"\nRegistrando ingredientes para: {p.Nombre}");
+            string continuar = "s";
 
-            foreach (Pedido p in todosLosPedidos)
+            do
             {
-                bool coincideId = string.IsNullOrEmpty(idPedido) || p.IdPedido == idPedido;
-                bool coincideDni = string.IsNullOrEmpty(dniCliente) || p.DniCliente == dniCliente;
-                
-                bool coincideFecha = true;
-                if (!string.IsNullOrEmpty(fechaStr))
-                {
-                    DateTime fechaFiltro;
-                    if (DateTime.TryParse(fechaStr, out fechaFiltro))
-                    {
-                        if (p.FechaEntrega.Date != fechaFiltro.Date)
-                        {
-                            coincideFecha = false;
-                        }
-                    }
-                }
+                Receta nuevoInsumo = new Receta();
+                nuevoInsumo.IdProducto = idProd;
 
-                if (coincideId && coincideDni && coincideFecha)
-                {
-                    resultados.Add(p);
-                }
-            }
+                Console.WriteLine("\n-> Datos del Insumo:");
+                Console.Write("Nombre del Sub-Producto (ej: Harina): ");
+                nuevoInsumo.SubProducto = Console.ReadLine();
 
-            if (resultados.Count > 0)
-            {
-                foreach (Pedido res in resultados)
-                {
-                    Console.WriteLine("\n-------------------------");
-                    Console.WriteLine($"Código Pedido: {res.IdPedido}");
-                    Console.WriteLine($"Cliente (DNI): {res.DniCliente}");
-                    Console.WriteLine($"Producto: {res.Producto}");
-                    Console.WriteLine($"Cantidad: {res.Cantidad}");
-                    Console.WriteLine($"Fecha Entrega: {res.FechaEntrega:dd/MM/yyyy}");
-                    Console.WriteLine($"Estado: {res.Estado}");
-                    Console.WriteLine("-------------------------");
+                Console.Write("Cantidad: ");
+                nuevoInsumo.Cantidad = decimal.Parse(Console.ReadLine());
 
-                    Console.WriteLine("Detalle del Pedido seleccionado:");
-                    Console.WriteLine($"Observaciones: {res.Observaciones}");
-                    Console.WriteLine($"Fecha Registro: {res.FechaRegistro}");
-                    
-                    Console.WriteLine("\n¿Desea cambiar el estado de este pedido?");
-                    Console.WriteLine("1. Cambiar Estado");
-                    Console.WriteLine("2. Volver");
-                    Console.Write("Seleccione opción: ");
-                    string opcEstado = Console.ReadLine();
+                Console.Write("Unidad de Medida (ej: Kg, Unidades, Litros): ");
+                nuevoInsumo.UnidadMedida = Console.ReadLine();
 
-                    if (opcEstado == "1")
-                    {
-                        if (pedidoService.CambiarEstadoPedido(res.IdPedido))
-                        {
-                            Console.WriteLine("Estado actualizado correctamente.");
-                        }
-                    }
-                }
-            }
-            else
-            {
-                Console.WriteLine("\nNo se encontraron pedidos con los criterios indicados.");
-            }
+                // Guardamos este ingrediente en el archivo
+                recetaService.RegistrarIngrediente(nuevoInsumo);
+                Console.WriteLine("¡Insumo agregado a la receta!");
+
+                // Preguntamos si desea añadir otro elemento al mismo producto
+                Console.Write("\n¿Desea agregar otro insumo a este producto? (s/n): ");
+                continuar = Console.ReadLine().ToLower();
+
+            } while (continuar == "s");
+
+            Console.WriteLine("\nSe terminó de armar la receta para el producto.");
         }
 
-        static void MostrarPedidosPendientes()
+        static void ConsultarRecetaProducto()
         {
-            Console.WriteLine("\n--- Pedidos Pendientes (Próximos 6 días) ---");
-            List<Pedido> todosLosPedidos = pedidoService.ObtenerPedidos();
-            List<Pedido> pendientes = new List<Pedido>();
+            Console.WriteLine("\n--- Consultar Receta ---");
+            Console.Write("Ingrese el ID del Producto: ");
+            string idProd = Console.ReadLine();
 
-            DateTime hoy = DateTime.Now.Date;
-            DateTime limite = hoy.AddDays(6);
+            Producto p = productoService.BuscarProductoPorId(idProd);
+            string nombreProd = p != null ? p.Nombre : "Producto No Encontrado o Eliminado";
 
-            foreach (Pedido p in todosLosPedidos)
+            List<Receta> ingredientes = recetaService.ObtenerRecetaPorProducto(idProd);
+
+            Console.WriteLine($"\nReceta para: {nombreProd} (ID: {idProd})");
+            if (ingredientes.Count > 0)
             {
-                if (p.Estado == "Pendiente" && p.FechaEntrega.Date >= hoy && p.FechaEntrega.Date <= limite)
+                Console.WriteLine("-------------------------------------");
+                foreach (Receta r in ingredientes)
                 {
-                    pendientes.Add(p);
+                    Console.WriteLine($"- Insumo: {r.SubProducto} | Cantidad: {r.Cantidad} {r.UnidadMedida}");
                 }
-            }
-
-           
-            for (int i = 0; i < pendientes.Count - 1; i++)
-            {
-                for (int j = 0; j < pendientes.Count - 1 - i; j++)
-                {
-                    if (pendientes[j].FechaEntrega > pendientes[j + 1].FechaEntrega)
-                    {
-                        Pedido temp = pendientes[j];
-                        pendientes[j] = pendientes[j + 1];
-                        pendientes[j + 1] = temp;
-                    }
-                }
-            }
-
-            if (pendientes.Count > 0)
-            {
-                foreach (Pedido p in pendientes)
-                {
-                    Cliente cliente = clienteService.BuscarClientePorDni(p.DniCliente);
-                    string nombreCliente = cliente != null ? cliente.Nombres : "Desconocido";
-
-                    Console.WriteLine($"\n{p.FechaEntrega:dd/MM/yyyy}");
-                    Console.WriteLine($"{p.IdPedido}");
-                    Console.WriteLine($"Cliente: {nombreCliente}");
-                    Console.WriteLine($"Producto: {p.Producto}");
-                }
+                Console.WriteLine("-------------------------------------");
             }
             else
             {
-                Console.WriteLine("No hay pedidos pendientes en los próximos 6 días.");
+                Console.WriteLine("Este producto aún no tiene insumos registrados en su receta.");
             }
         }
+
+        static void EliminarRecetaProducto()
+        {
+            Console.WriteLine("\n--- Eliminar Receta de Producto ---");
+            Console.Write("Ingrese el ID del Producto para borrar su receta: ");
+            string idProd = Console.ReadLine();
+
+            // Llama al service que ejecuta la validación de negocio
+            if (recetaService.EliminarRecetaDeProducto(idProd))
+            {
+                Console.WriteLine("\nReceta eliminada exitosamente del archivo recetas.txt.");
+            }
+            else
+            {
+                Console.WriteLine("\nNo se puede eliminar la receta porque el producto todavía existe en el catálogo.");
+            }
+        }
+
+        // AUGUSTO - RECETAS
     }
 }
