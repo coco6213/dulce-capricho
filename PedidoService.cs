@@ -160,7 +160,7 @@ namespace DulceCaprichoConsola
                         if (p.Estado == "Entregado") totalEntregados++;
                     }
 
-                    Console.WriteLine($"{p.IdPedido,-9} {p.FechaRegistro:dd/MM/yyyy,-12} {p.Producto,-18} {p.Cantidad,-6} S/. {ventaTotal,-8:N2} S/. {gananciaNeto,-8:N2}");
+                    Console.WriteLine($"{p.IdPedido,-9} {p.FechaRegistro:dd/MM/yyyy} {p.Producto,-18} {p.Cantidad,-6} S/. {ventaTotal,-8:N2} S/. {gananciaNeto,-8:N2}");
                 }
             }
 

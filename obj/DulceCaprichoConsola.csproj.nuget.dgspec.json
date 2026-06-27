@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jean\\Desktop\\DULCE_CAPRICHO\\dulce-capricho\\DulceCaprichoConsola.csproj": {}
+    "C:\\Users\\Jean\\Documents\\Proyecto_Fin\\dulce-capricho\\DulceCaprichoConsola.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jean\\Desktop\\DULCE_CAPRICHO\\dulce-capricho\\DulceCaprichoConsola.csproj": {
+    "C:\\Users\\Jean\\Documents\\Proyecto_Fin\\dulce-capricho\\DulceCaprichoConsola.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jean\\Desktop\\DULCE_CAPRICHO\\dulce-capricho\\DulceCaprichoConsola.csproj",
+        "projectUniqueName": "C:\\Users\\Jean\\Documents\\Proyecto_Fin\\dulce-capricho\\DulceCaprichoConsola.csproj",
         "projectName": "DulceCaprichoConsola",
-        "projectPath": "C:\\Users\\Jean\\Desktop\\DULCE_CAPRICHO\\dulce-capricho\\DulceCaprichoConsola.csproj",
+        "projectPath": "C:\\Users\\Jean\\Documents\\Proyecto_Fin\\dulce-capricho\\DulceCaprichoConsola.csproj",
         "packagesPath": "C:\\Users\\Jean\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jean\\Desktop\\DULCE_CAPRICHO\\dulce-capricho\\obj\\",
+        "outputPath": "C:\\Users\\Jean\\Documents\\Proyecto_Fin\\dulce-capricho\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Jean\\AppData\\Roaming\\NuGet\\NuGet.Config",

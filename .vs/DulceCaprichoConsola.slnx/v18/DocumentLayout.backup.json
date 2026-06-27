@@ -1,22 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Jean\\Desktop\\DULCE_CAPRICHO\\dulce-capricho\\",
+  "WorkspaceRootPath": "C:\\Users\\Jean\\Documents\\Proyecto_Fin\\dulce-capricho\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{18AEE18A-D9C0-89E8-61DD-29E4D778121D}|DulceCaprichoConsola.csproj|c:\\users\\jean\\desktop\\dulce_capricho\\dulce-capricho\\pedidoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{18AEE18A-D9C0-89E8-61DD-29E4D778121D}|DulceCaprichoConsola.csproj|c:\\users\\jean\\documents\\proyecto_fin\\dulce-capricho\\pedidoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{18AEE18A-D9C0-89E8-61DD-29E4D778121D}|DulceCaprichoConsola.csproj|solutionrelative:pedidoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{18AEE18A-D9C0-89E8-61DD-29E4D778121D}|DulceCaprichoConsola.csproj|c:\\users\\jean\\desktop\\dulce_capricho\\dulce-capricho\\pedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{18AEE18A-D9C0-89E8-61DD-29E4D778121D}|DulceCaprichoConsola.csproj|c:\\users\\jean\\documents\\proyecto_fin\\dulce-capricho\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{18AEE18A-D9C0-89E8-61DD-29E4D778121D}|DulceCaprichoConsola.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18AEE18A-D9C0-89E8-61DD-29E4D778121D}|DulceCaprichoConsola.csproj|c:\\users\\jean\\documents\\proyecto_fin\\dulce-capricho\\productoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{18AEE18A-D9C0-89E8-61DD-29E4D778121D}|DulceCaprichoConsola.csproj|solutionrelative:productoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18AEE18A-D9C0-89E8-61DD-29E4D778121D}|DulceCaprichoConsola.csproj|c:\\users\\jean\\documents\\proyecto_fin\\dulce-capricho\\pedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{18AEE18A-D9C0-89E8-61DD-29E4D778121D}|DulceCaprichoConsola.csproj|solutionrelative:pedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{18AEE18A-D9C0-89E8-61DD-29E4D778121D}|DulceCaprichoConsola.csproj|c:\\users\\jean\\desktop\\dulce_capricho\\dulce-capricho\\stockservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{18AEE18A-D9C0-89E8-61DD-29E4D778121D}|DulceCaprichoConsola.csproj|c:\\users\\jean\\documents\\proyecto_fin\\dulce-capricho\\stockservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{18AEE18A-D9C0-89E8-61DD-29E4D778121D}|DulceCaprichoConsola.csproj|solutionrelative:stockservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{18AEE18A-D9C0-89E8-61DD-29E4D778121D}|DulceCaprichoConsola.csproj|c:\\users\\jean\\desktop\\dulce_capricho\\dulce-capricho\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{18AEE18A-D9C0-89E8-61DD-29E4D778121D}|DulceCaprichoConsola.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,15 +30,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "StockService.cs",
-              "DocumentMoniker": "C:\\Users\\Jean\\Desktop\\DULCE_CAPRICHO\\dulce-capricho\\StockService.cs",
+              "DocumentMoniker": "C:\\Users\\Jean\\Documents\\Proyecto_Fin\\dulce-capricho\\StockService.cs",
               "RelativeDocumentMoniker": "StockService.cs",
-              "ToolTip": "C:\\Users\\Jean\\Desktop\\DULCE_CAPRICHO\\dulce-capricho\\StockService.cs",
+              "ToolTip": "C:\\Users\\Jean\\Documents\\Proyecto_Fin\\dulce-capricho\\StockService.cs",
               "RelativeToolTip": "StockService.cs",
               "ViewState": "AgIAADoAAAAAAAAAAAAawEMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -43,29 +47,42 @@
               "EditorCaption": ""
             },
             {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PedidoService.cs",
+              "DocumentMoniker": "C:\\Users\\Jean\\Documents\\Proyecto_Fin\\dulce-capricho\\PedidoService.cs",
+              "RelativeDocumentMoniker": "PedidoService.cs",
+              "ToolTip": "C:\\Users\\Jean\\Documents\\Proyecto_Fin\\dulce-capricho\\PedidoService.cs*",
+              "RelativeToolTip": "PedidoService.cs*",
+              "ViewState": "AgIAAI0AAAAAAAAAAAAAAJoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-27T17:46:05.462Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProductoService.cs",
+              "DocumentMoniker": "C:\\Users\\Jean\\Documents\\Proyecto_Fin\\dulce-capricho\\ProductoService.cs",
+              "RelativeDocumentMoniker": "ProductoService.cs",
+              "ToolTip": "C:\\Users\\Jean\\Documents\\Proyecto_Fin\\dulce-capricho\\ProductoService.cs",
+              "RelativeToolTip": "ProductoService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-27T17:45:54.597Z",
+              "EditorCaption": ""
+            },
+            {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PedidoService.cs",
-              "DocumentMoniker": "C:\\Users\\Jean\\Desktop\\DULCE_CAPRICHO\\dulce-capricho\\PedidoService.cs",
-              "RelativeDocumentMoniker": "PedidoService.cs",
-              "ToolTip": "C:\\Users\\Jean\\Desktop\\DULCE_CAPRICHO\\dulce-capricho\\PedidoService.cs",
-              "RelativeToolTip": "PedidoService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-27T02:46:14.766Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Pedido.cs",
-              "DocumentMoniker": "C:\\Users\\Jean\\Desktop\\DULCE_CAPRICHO\\dulce-capricho\\Pedido.cs",
+              "DocumentMoniker": "C:\\Users\\Jean\\Documents\\Proyecto_Fin\\dulce-capricho\\Pedido.cs",
               "RelativeDocumentMoniker": "Pedido.cs",
-              "ToolTip": "C:\\Users\\Jean\\Desktop\\DULCE_CAPRICHO\\dulce-capricho\\Pedido.cs",
+              "ToolTip": "C:\\Users\\Jean\\Documents\\Proyecto_Fin\\dulce-capricho\\Pedido.cs",
               "RelativeToolTip": "Pedido.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -74,13 +91,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Jean\\Desktop\\DULCE_CAPRICHO\\dulce-capricho\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\Jean\\Documents\\Proyecto_Fin\\dulce-capricho\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\Jean\\Desktop\\DULCE_CAPRICHO\\dulce-capricho\\Program.cs",
+              "ToolTip": "C:\\Users\\Jean\\Documents\\Proyecto_Fin\\dulce-capricho\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAIAzwBgAAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAnwBgAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-24T00:31:52.846Z",
               "EditorCaption": ""

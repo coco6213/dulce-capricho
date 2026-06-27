@@ -208,6 +208,20 @@ namespace DulceCaprichoConsola
             }
 
             pedidoService.RegistrarPedido(nuevoPedido);
+            decimal totalPagar = nuevoPedido.Cantidad * nuevoPedido.PrecioVenta;
+
+            // Imprime el comprobante resumido del pedido procesado
+            Console.WriteLine("\n=============================================");
+            Console.WriteLine("          RESUMEN DE VENTA - COBRO           ");
+            Console.WriteLine("=============================================");
+            Console.WriteLine($"{"Cliente DNI",-18}: {nuevoPedido.DniCliente}");
+            Console.WriteLine($"{"Producto",-18}: {nuevoPedido.Producto}");
+            Console.WriteLine($"{"Precio Unitario",-18}: S/. {nuevoPedido.PrecioVenta:N2}");
+            Console.WriteLine($"{"Cantidad",-18}: {nuevoPedido.Cantidad}");
+            Console.WriteLine("---------------------------------------------");
+            Console.WriteLine($"{"TOTAL A PAGAR",-18}: S/. {totalPagar:N2}");
+            Console.WriteLine("=============================================");
+
             Console.WriteLine("\nPedido registrado correctamente en el sistema.");
         }
 

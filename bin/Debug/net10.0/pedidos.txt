@@ -1,2 +1,3 @@
 PED-0001|60692466|Torta Helada|2|2026-06-26 22:57:15|2026-06-29|Sin alergias|Entregado|32|60
 PED-0002|60692466|Torta Helada|2|2026-06-26 23:05:09|2026-06-30|Ninguna|Pendiente|32|60
+PED-0003|60692466|Torta Helada|1|2026-06-27 12:45:41|2026-06-28|Ninguna|Pendiente|32|60
