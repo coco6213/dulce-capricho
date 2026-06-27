@@ -1,3 +1,2 @@
-PED-0001|41232121|popo|1|2026-06-12 15:03:20|2026-12-23|nada|Pendiente
-PED-0002|12345678|makis|24|2026-06-12 15:05:30|2026-06-12|acevichados|Pendiente
-PED-0003|12345678|makis, pastel de oreo, chocochip|1|2026-06-12 15:06:51|2026-06-12|usar 1kg de azucar nada mas para el pastel de oreo y galleta de vainilla|Pendiente
+PED-0001|60692466|Torta Helada|2|2026-06-26 22:57:15|2026-06-29|Sin alergias|Entregado|32|60
+PED-0002|60692466|Torta Helada|2|2026-06-26 23:05:09|2026-06-30|Ninguna|Pendiente|32|60
