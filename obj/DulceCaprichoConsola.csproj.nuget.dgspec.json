@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\megum\\OneDrive\\Escritorio\\DulceCaprichoConsola\\DulceCaprichoConsola.csproj": {}
+    "C:\\Users\\Jean\\Desktop\\DULCE_CAPRICHO\\dulce-capricho\\DulceCaprichoConsola.csproj": {}
   },
   "projects": {
-    "C:\\Users\\megum\\OneDrive\\Escritorio\\DulceCaprichoConsola\\DulceCaprichoConsola.csproj": {
+    "C:\\Users\\Jean\\Desktop\\DULCE_CAPRICHO\\dulce-capricho\\DulceCaprichoConsola.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\megum\\OneDrive\\Escritorio\\DulceCaprichoConsola\\DulceCaprichoConsola.csproj",
+        "projectUniqueName": "C:\\Users\\Jean\\Desktop\\DULCE_CAPRICHO\\dulce-capricho\\DulceCaprichoConsola.csproj",
         "projectName": "DulceCaprichoConsola",
-        "projectPath": "C:\\Users\\megum\\OneDrive\\Escritorio\\DulceCaprichoConsola\\DulceCaprichoConsola.csproj",
-        "packagesPath": "C:\\Users\\megum\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\megum\\OneDrive\\Escritorio\\DulceCaprichoConsola\\obj\\",
+        "projectPath": "C:\\Users\\Jean\\Desktop\\DULCE_CAPRICHO\\dulce-capricho\\DulceCaprichoConsola.csproj",
+        "packagesPath": "C:\\Users\\Jean\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jean\\Desktop\\DULCE_CAPRICHO\\dulce-capricho\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\megum\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Jean\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

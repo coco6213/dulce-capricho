@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DulceCaprichoConsola")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8ede34ebcd4728efb8bce71a8d3b2a2b599dde50")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+93324032554fc7bacf202b08931860bc7f549a5d")]
 [assembly: System.Reflection.AssemblyProductAttribute("DulceCaprichoConsola")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DulceCaprichoConsola")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
